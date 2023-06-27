@@ -1,0 +1,20 @@
+aplikacja witająca i zachęcająca do rejestracji
+*"sprawdz naszych lekarzy i ich godziny"
+  lewo gora jakies logo i farmazony
+prawo gora - strefa pracownika/logowanie
+
+na lewo jakis fajny napis np wierzymy w zdrowie. pozwól nam to pokazać
+na prawo znajdź 
+na dole strzałka w dół
+i dokuemnty typu poczytaj troche itd
+kolorystyka myśle biało turkusowa
+
+
+po kliknieciu w zarejestruj do poradni:
+wybierz dziedzine
+po dziedzinie wybierz godzine i date
+po wybraniu wybierz lekarza itd
+
+po kliknieciu w znajdz lekarza: jakas ladna lista na lewo ortopedami i innymi. 
+główna czesc strona powinna oferować spis lekarzy z aktualnie wybranej dziedziny
+czyli imie nazwisko nr kontaktowy godziny. po kliknieciu w godziny  
