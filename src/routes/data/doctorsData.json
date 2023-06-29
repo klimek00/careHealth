@@ -1,0 +1,105 @@
+{
+  "specjalizacje": [
+    {
+      "nazwa": "Okulista",
+      "lekarze": [
+        {
+          "imie": "Jan",
+          "nazwisko": "Kowalski",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 16:00",
+            "wtorek": "9:00 - 17:00",
+            "sroda": "8:00 - 14:00",
+            "czwartek": "12:00 - 20:00",
+            "piatek": "8:00 - 13:00"
+          },
+          "adres": "ul. Poznańska 1, Poznań",
+          "cena": 150
+        },
+        {
+          "imie": "Anna",
+          "nazwisko": "Nowak",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "9:00 - 17:00"
+          },
+          "adres": "ul. Poznańska 2, Poznań",
+          "cena": 180
+        },
+        {
+          "imie": "Mariusz",
+          "nazwisko": "Nowicki",
+          "godziny_pracy": {
+            "poniedzialek": "9:00 - 17:00",
+            "wtorek": "8:00 - 16:00",
+            "sroda": "10:00 - 18:00",
+            "czwartek": "8:00 - 14:00",
+            "piatek": "12:00 - 20:00"
+          },
+          "adres": "ul. Poznańska 5, Poznań",
+          "cena": 160
+        },
+        {
+          "imie": "Ewa",
+          "nazwisko": "Wójcik",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 14:00",
+            "wtorek": "12:00 - 20:00",
+            "sroda": "9:00 - 17:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "10:00 - 18:00"
+          },
+          "adres": "ul. Poznańska 6, Poznań",
+          "cena": 170
+        },
+        {
+          "imie": "Piotr",
+          "nazwisko": "Adamczyk",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "9:00 - 17:00",
+            "piatek": "8:00 - 16:00"
+          },
+          "adres": "ul. Poznańska 7, Poznań",
+          "cena": 190
+        }
+      ]
+    },
+    {
+      "nazwa": "Dermatolog",
+      "lekarze": [
+        {
+          "imie": "Marcin",
+          "nazwisko": "Lisowski",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 16:00",
+            "wtorek": "9:00 - 17:00",
+            "sroda": "8:00 - 14:00",
+            "czwartek": "12:00 - 20:00",
+            "piatek": "8:00 - 13:00"
+          },
+          "adres": "ul. Poznańska 3, Poznań",
+          "cena": 200
+        },
+        {
+          "imie": "Magdalena",
+          "nazwisko": "Kowalczyk",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "9:00 - 17:00"
+          },
+          "adres": "ul. Poznańska 4, Poznań",
+          "cena": 220
+        }
+      ]
+    }
+  ]
+}

@@ -4,6 +4,7 @@ export default function LoginModal({modalDisplay, modalClose}) {
   const divStyle = {
     visibility: modalDisplay ? "visible" : "hidden",
     opacity: modalDisplay ? 1 : 0,
+    backgroundColor: "rgb(0, 0, 0, 0.6"
   } 
 
   let handleModalClose = (e) => {
@@ -12,7 +13,7 @@ export default function LoginModal({modalDisplay, modalClose}) {
   }
 
   return (
-    <div id="loginModal" className="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto w-full transition ease-out duration-150" onClick={e => handleModalClose(e)} style={divStyle}>
+    <div id="loginModal" className="h-full fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto w-full transition ease-out duration-300" onClick={e => handleModalClose(e)} style={divStyle}>
       <div className="mt-24">
         <div className="relative bg-white rounded-lg shadow-lg border border-gray-300 rounded-md mx-auto w-1/4" onClick={e => e.stopPropagation()}>
           <div className="flex items-start justify-between p-4 border-b rounded-t">

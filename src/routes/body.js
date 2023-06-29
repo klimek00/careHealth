@@ -1,5 +1,9 @@
+import { Link } from 'react-router-dom'
 
 export default function Body() {
+  /**
+   * przycisk dostepnosci czyli powiekszenie czcionki itd
+   */
   return (
     <>
     <section className="flex w-full text-white">
@@ -14,10 +18,12 @@ export default function Body() {
 
       <section className="w-1/2 registration-section py-16">
         <div className="mx-auto flex justify-center items-center">
+            <Link to='/searchDoctors'>
           <div className="text-center flex justify-center flex-col">
             <button className="registration-title text-lg font-semibold mb-4 text-black">Znajdź swojego lekarza, bądź</button>
             <button className="registration-description text-3xl text-black">Zarejestruj się do nas już teraz!</button>
           </div>
+            </Link>
         </div>
       </section>
     </section>
