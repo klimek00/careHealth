@@ -4,6 +4,7 @@
       "nazwa": "Okulista",
       "lekarze": [
         {
+          "id": "1123456789123456",
           "imie": "Jan",
           "nazwisko": "Kowalski",
           "godziny_pracy": {
@@ -17,8 +18,325 @@
           "cena": 150
         },
         {
+          "id": "zaq123wsx456edcg",
           "imie": "Anna",
           "nazwisko": "Nowak",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "9:00 - 17:00"
+          },
+          "adres": "ul. Poznańska 2, Poznań",
+          "cena": 180
+        },
+        {
+          "id": "1ve5fahu6g224562",
+          "imie": "Mariusz",
+          "nazwisko": "Nowicki",
+          "godziny_pracy": {
+            "poniedzialek": "9:00 - 17:00",
+            "wtorek": "8:00 - 16:00",
+            "sroda": "10:00 - 18:00",
+            "czwartek": "8:00 - 14:00",
+            "piatek": "12:00 - 20:00"
+          },
+          "adres": "ul. Poznańska 5, Poznań",
+          "cena": 160
+        },
+        {
+          "id": "1ve1fahu6g224566",
+          "imie": "Ewa",
+          "nazwisko": "Wójcik",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 14:00",
+            "wtorek": "12:00 - 20:00",
+            "sroda": "9:00 - 17:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "10:00 - 18:00"
+          },
+          "adres": "ul. Poznańska 6, Poznań",
+          "cena": 170
+        },
+        {
+          "id": "1ve5faau6g224566",
+          "imie": "Piotr",
+          "nazwisko": "Adamczyk",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "9:00 - 17:00",
+            "piatek": "8:00 - 16:00"
+          },
+          "adres": "ul. Poznańska 7, Poznań",
+          "cena": 190
+        },
+        {
+          "id": "1ve5fahu6g2b4566",
+          "imie": "Adam",
+          "nazwisko": "Malinowski",
+          "godziny_pracy": {
+            "poniedzialek": "9:00 - 17:00",
+            "wtorek": "8:00 - 16:00",
+            "sroda": "10:00 - 18:00",
+            "czwartek": "8:00 - 14:00",
+            "piatek": "12:00 - 20:00"
+          },
+          "adres": "ul. Poznańska 8, Poznań",
+          "cena": 160
+        },
+        {
+          "id": "1ve5fahu6v224566",
+          "imie": "Katarzyna",
+          "nazwisko": "Jankowska",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 14:00",
+            "wtorek": "12:00 - 20:00",
+            "sroda": "9:00 - 17:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "10:00 - 18:00"
+          },
+          "adres": "ul. Poznańska 9, Poznań",
+          "cena": 170
+        }
+      ]
+    },
+    {
+      "nazwa": "Dermatolog",
+      "lekarze": [
+        {
+          "id": "1ve5cahu6g224566",
+          "imie": "Marcin",
+          "nazwisko": "Lisowski",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 16:00",
+            "wtorek": "9:00 - 17:00",
+            "sroda": "8:00 - 14:00",
+            "czwartek": "12:00 - 20:00",
+            "piatek": "8:00 - 13:00"
+          },
+          "adres": "ul. Poznańska 3, Poznań",
+          "cena": 200
+        },
+        {
+          "id": "1ve5fahu6gx24566",
+          "imie": "Magdalena",
+          "nazwisko": "Kowalczyk",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "9:00 - 17:00"
+          },
+          "adres": "ul. Poznańska 4, Poznań",
+          "cena": 220
+        },
+        {
+          "id": "1ve5fahz6g224566",
+          "imie": "Krzysztof",
+          "nazwisko": "Wojciechowski",
+          "godziny_pracy": {
+            "poniedzialek": "9:00 - 17:00",
+            "wtorek": "8:00 - 16:00",
+            "sroda": "10:00 - 18:00",
+            "czwartek": "8:00 - 14:00",
+            "piatek": "12:00 - 20:00"
+          },
+          "adres": "ul. Poznańska 10, Poznań",
+          "cena": 180
+        },
+        {
+          "id": "1ve5fahu6g224p66",
+          "imie": "Natalia",
+          "nazwisko": "Kowalewska",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 14:00",
+            "wtorek": "12:00 - 20:00",
+            "sroda": "9:00 - 17:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "10:00 - 18:00"
+          },
+          "adres": "ul. Poznańska 11, Poznań",
+          "cena": 190
+        },
+        {
+          "id": "1ve5fahu6g2245o6",
+          "imie": "Andrzej",
+          "nazwisko": "Kowal",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "9:00 - 17:00",
+            "piatek": "8:00 - 16:00"
+          },
+          "adres": "ul. Poznańska 12, Poznań",
+          "cena": 200
+        }
+      ]
+    },
+    {
+      "nazwa": "Kardiolog",
+      "lekarze": [
+        {
+          "imie": "Adam",
+          "nazwisko": "Nowakowski",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 16:00",
+            "wtorek": "9:00 - 17:00",
+            "sroda": "8:00 - 14:00",
+            "czwartek": "12:00 - 20:00",
+            "piatek": "8:00 - 13:00"
+          },
+          "adres": "ul. Poznańska 13, Poznań",
+          "cena": 220
+        },
+        {
+          "imie": "Karolina",
+          "nazwisko": "Kowalczyk",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "9:00 - 17:00"
+          },
+          "adres": "ul. Poznańska 14, Poznań",
+          "cena": 200
+        },
+        {
+          "imie": "Kamil",
+          "nazwisko": "Wojciechowski",
+          "godziny_pracy": {
+            "poniedzialek": "9:00 - 17:00",
+            "wtorek": "8:00 - 16:00",
+            "sroda": "10:00 - 18:00",
+            "czwartek": "8:00 - 14:00",
+            "piatek": "12:00 - 20:00"
+          },
+          "adres": "ul. Poznańska 15, Poznań",
+          "cena": 210
+        },
+        {
+          "imie": "Aleksandra",
+          "nazwisko": "Kowalska",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 14:00",
+            "wtorek": "12:00 - 20:00",
+            "sroda": "9:00 - 17:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "10:00 - 18:00"
+          },
+          "adres": "ul. Poznańska 16, Poznań",
+          "cena": 230
+        },
+        {
+          "imie": "Michał",
+          "nazwisko": "Adamczyk",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "9:00 - 17:00",
+            "piatek": "8:00 - 16:00"
+          },
+          "adres": "ul. Poznańska 17, Poznań",
+          "cena": 220
+        }
+      ]
+    },
+    {
+      "nazwa": "Chirurg Plastyczny",
+      "lekarze": [
+        {
+          "imie": "Marcin",
+          "nazwisko": "Lisowski",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 16:00",
+            "wtorek": "9:00 - 17:00",
+            "sroda": "8:00 - 14:00",
+            "czwartek": "12:00 - 20:00",
+            "piatek": "8:00 - 13:00"
+          },
+          "adres": "ul. Poznańska 3, Poznań",
+          "cena": 200
+        },
+        {
+          "imie": "Magdalena",
+          "nazwisko": "Kowalczyk",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "9:00 - 17:00"
+          },
+          "adres": "ul. Poznańska 4, Poznań",
+          "cena": 220
+        },
+        {
+          "imie": "Krzysztof",
+          "nazwisko": "Wojciechowski",
+          "godziny_pracy": {
+            "poniedzialek": "9:00 - 17:00",
+            "wtorek": "8:00 - 16:00",
+            "sroda": "10:00 - 18:00",
+            "czwartek": "8:00 - 14:00",
+            "piatek": "12:00 - 20:00"
+          },
+          "adres": "ul. Poznańska 10, Poznań",
+          "cena": 180
+        },
+        {
+          "imie": "Natalia",
+          "nazwisko": "Kowalewska",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 14:00",
+            "wtorek": "12:00 - 20:00",
+            "sroda": "9:00 - 17:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "10:00 - 18:00"
+          },
+          "adres": "ul. Poznańska 11, Poznań",
+          "cena": 190
+        },
+        {
+          "imie": "Andrzej",
+          "nazwisko": "Kowal",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "9:00 - 17:00",
+            "piatek": "8:00 - 16:00"
+          },
+          "adres": "ul. Poznańska 12, Poznań",
+          "cena": 200
+        }
+      ]
+    },
+    {
+      "nazwa": "Ortopeda",
+      "lekarze": [
+        {
+          "imie": "Janusz",
+          "nazwisko": "Kowalski",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 16:00",
+            "wtorek": "9:00 - 17:00",
+            "sroda": "8:00 - 14:00",
+            "czwartek": "12:00 - 20:00",
+            "piatek": "8:00 - 13:00"
+          },
+          "adres": "ul. Poznańska 1, Poznań",
+          "cena": 150
+        },
+        {
+          "imie": "Agnieszka",
+          "nazwisko": "Polska",
           "godziny_pracy": {
             "poniedzialek": "10:00 - 18:00",
             "wtorek": "8:00 - 14:00",
@@ -65,13 +383,39 @@
             "czwartek": "9:00 - 17:00",
             "piatek": "8:00 - 16:00"
           },
-          "adres": "ul. Poznańska 7, Poznań",
+          "adres": "ul. Poznańska 15, Poznań",
           "cena": 190
+        },
+        {
+          "imie": "Adam",
+          "nazwisko": "Malinowski",
+          "godziny_pracy": {
+            "poniedzialek": "9:00 - 17:00",
+            "wtorek": "8:00 - 16:00",
+            "sroda": "10:00 - 18:00",
+            "czwartek": "8:00 - 14:00",
+            "piatek": "12:00 - 20:00"
+          },
+          "adres": "ul. Poznańska 11, Poznań",
+          "cena": 160
+        },
+        {
+          "imie": "Katarzyna",
+          "nazwisko": "Jankowska",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 14:00",
+            "wtorek": "12:00 - 20:00",
+            "sroda": "9:00 - 17:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "10:00 - 18:00"
+          },
+          "adres": "ul. Poznańska 19, Poznań",
+          "cena": 170
         }
       ]
     },
     {
-      "nazwa": "Dermatolog",
+      "nazwa": "Psychiatra",
       "lekarze": [
         {
           "imie": "Marcin",
@@ -98,6 +442,185 @@
           },
           "adres": "ul. Poznańska 4, Poznań",
           "cena": 220
+        },
+        {
+          "imie": "Krzysztof",
+          "nazwisko": "Wojciechowski",
+          "godziny_pracy": {
+            "poniedzialek": "9:00 - 17:00",
+            "wtorek": "8:00 - 16:00",
+            "sroda": "10:00 - 18:00",
+            "czwartek": "8:00 - 14:00",
+            "piatek": "12:00 - 20:00"
+          },
+          "adres": "ul. Poznańska 10, Poznań",
+          "cena": 180
+        },
+        {
+          "imie": "Natalia",
+          "nazwisko": "Kowalewska",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 14:00",
+            "wtorek": "12:00 - 20:00",
+            "sroda": "9:00 - 17:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "10:00 - 18:00"
+          },
+          "adres": "ul. Poznańska 11, Poznań",
+          "cena": 190
+        },
+        {
+          "imie": "Andrzej",
+          "nazwisko": "Kowal",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "9:00 - 17:00",
+            "piatek": "8:00 - 16:00"
+          },
+          "adres": "ul. Poznańska 12, Poznań",
+          "cena": 200
+        }
+      ]
+    },
+    {
+      "nazwa": "Pediatra",
+      "lekarze": [
+        {
+          "imie": "Marcinek",
+          "nazwisko": "Uwalczyk",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 16:00",
+            "wtorek": "9:00 - 17:00",
+            "sroda": "8:00 - 14:00",
+            "czwartek": "12:00 - 20:00",
+            "piatek": "8:00 - 13:00"
+          },
+          "adres": "ul. Poznańska 3, Poznań",
+          "cena": 200
+        },
+        {
+          "imie": "Magdalena",
+          "nazwisko": "Kowalczyk",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "9:00 - 17:00"
+          },
+          "adres": "ul. Poznańska 4, Poznań",
+          "cena": 220
+        },
+        {
+          "imie": "Krzysztof",
+          "nazwisko": "Wojciechowski",
+          "godziny_pracy": {
+            "poniedzialek": "9:00 - 17:00",
+            "wtorek": "8:00 - 16:00",
+            "sroda": "10:00 - 18:00",
+            "czwartek": "8:00 - 14:00",
+            "piatek": "12:00 - 20:00"
+          },
+          "adres": "ul. Poznańska 10, Poznań",
+          "cena": 180
+        },
+        {
+          "imie": "Natalia",
+          "nazwisko": "Kowalewska",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 14:00",
+            "wtorek": "12:00 - 20:00",
+            "sroda": "9:00 - 17:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "10:00 - 18:00"
+          },
+          "adres": "ul. Poznańska 11, Poznań",
+          "cena": 190
+        },
+        {
+          "imie": "Andrzej",
+          "nazwisko": "Kowal",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "9:00 - 17:00",
+            "piatek": "8:00 - 16:00"
+          },
+          "adres": "ul. Poznańska 12, Poznań",
+          "cena": 200
+        }
+      ]
+    },
+    {
+      "nazwa": "Ginekolog",
+      "lekarze": [
+        {
+          "imie": "Marcin",
+          "nazwisko": "Lisowski",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 16:00",
+            "wtorek": "9:00 - 17:00",
+            "sroda": "8:00 - 14:00",
+            "czwartek": "12:00 - 20:00",
+            "piatek": "8:00 - 13:00"
+          },
+          "adres": "ul. Poznańska 3, Poznań",
+          "cena": 200
+        },
+        {
+          "imie": "Magdalena",
+          "nazwisko": "Kowalczyk",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "9:00 - 17:00"
+          },
+          "adres": "ul. Poznańska 4, Poznań",
+          "cena": 220
+        },
+        {
+          "imie": "Krzysztof",
+          "nazwisko": "Wojciechowski",
+          "godziny_pracy": {
+            "poniedzialek": "9:00 - 17:00",
+            "wtorek": "8:00 - 16:00",
+            "sroda": "10:00 - 18:00",
+            "czwartek": "8:00 - 14:00",
+            "piatek": "12:00 - 20:00"
+          },
+          "adres": "ul. Poznańska 10, Poznań",
+          "cena": 180
+        },
+        {
+          "imie": "Natalia",
+          "nazwisko": "Kowalewska",
+          "godziny_pracy": {
+            "poniedzialek": "8:00 - 14:00",
+            "wtorek": "12:00 - 20:00",
+            "sroda": "9:00 - 17:00",
+            "czwartek": "8:00 - 16:00",
+            "piatek": "10:00 - 18:00"
+          },
+          "adres": "ul. Poznańska 11, Poznań",
+          "cena": 190
+        },
+        {
+          "imie": "Andrzej",
+          "nazwisko": "Kowal",
+          "godziny_pracy": {
+            "poniedzialek": "10:00 - 18:00",
+            "wtorek": "8:00 - 14:00",
+            "sroda": "12:00 - 20:00",
+            "czwartek": "9:00 - 17:00",
+            "piatek": "8:00 - 16:00"
+          },
+          "adres": "ul. Poznańska 12, Poznań",
+          "cena": 200
         }
       ]
     }
