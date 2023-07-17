@@ -10,7 +10,7 @@ export default function DisplayDoctors({data: {nazwa, lekarze}, doctorPressed}) 
   <>
     {lekarze.map((lekarz, i) => (
       <div key={i} className='w-full flex p-2 hover:bg-slate-200 border-b border-neutral-400' onClick={() => doctorPressed(lekarz.id)}>
-        <img src={photo} className='my-auto ml-10 rounded-full w-16 h-16'/>
+        <img src={photo} alt='zdjecie doktora' className='my-auto ml-10 rounded-full w-16 h-16'/>
         <div id='docInfo' className='w-auto ml-10 text-base'>
           <p>{lekarz.imie} {lekarz.nazwisko}, {nazwa}</p>
           <p>Adres: {lekarz?.adres}</p>

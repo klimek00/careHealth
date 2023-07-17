@@ -1,6 +1,11 @@
 import Input from "./input"
+import {useState} from 'react'
+import { ReactSession } from 'react-client-session'
+
 
 export default function LoginModal({modalDisplay, modalClose}) {
+  const [msgError, setMsgError] = useState('hasła')
+  
   const divStyle = {
     visibility: modalDisplay ? "visible" : "hidden",
     opacity: modalDisplay ? 1 : 0,
@@ -10,6 +15,145 @@ export default function LoginModal({modalDisplay, modalClose}) {
   let handleModalClose = (e) => {
     e.stopPropagation()
     modalClose()
+  }
+
+  let handleBadInput = (showError, msg = '') => {
+    setMsgError(msg)
+    let input = document.querySelector('#inputError')
+    input?.classList.toggle('invisible', !showError)
+  }
+
+  let validateUsername = (username) => {
+    if (username.length < 3) {
+      handleBadInput(true, 'Dlugosc username >= 3!') 
+      return false
+    } else if (username.match(/^[a-zA-Z0-9]+$/) == null) {
+      handleBadInput(true, 'Dozwolone znaki to a-Z, 0-9!') 
+      return false
+    }
+    else {
+      handleBadInput(false)
+      return true
+    }
+  }
+
+  let validatePassword = (password) => {
+    if (password.length < 8) {
+      handleBadInput(true, 'Dlugosc hasla >= 8!') 
+      return false
+    } else if (password.match(/^[a-zA-Z0-9]+$/) == null) {
+      handleBadInput(true, 'Dozwolone znaki to a-Z, 0-9!') 
+      return false
+    }
+    else {
+      handleBadInput(false)
+      return true
+    }
+  }
+
+  function handleError(error) {
+    handleBadInput(true, error.message || "TOTALNIE nieznany błąd, zgłoś");
+    console.error('errors via server:', error?.errors || error);
+    console.error('error:', error || error);
+  }
+
+  async function handleRegisterPress (e) {
+    const username = document.querySelector('#username').value
+    const password = document.querySelector('#password').value
+
+    //password validation via validateUsername, validatePassword
+    //run again just to make sure everything fine
+    if (validateUsername(username) && validatePassword(password)) {
+      await fetch('/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        })
+      })
+      .then((response) => {
+        //handle here server errors
+        if (response.status >= 500) {
+          throw new Error('Brak połączenia z serwerem!!')
+        }
+        return response?.json()
+      })
+      .then((response) => {
+        if (response.note === 'ok') {
+          console.log("OK!")
+          
+          //TODO: add session, go to panel etc.
+
+          //make the login session server-sided
+          ReactSession.set("username", response.username)
+
+          
+          
+          handleBadInput(true, 'pomyslnie zarejestrowano!')
+        } else if (response.note === 'badPasswordLength') {
+          handleBadInput(true, 'Dlugosc hasla >= 8!')
+        } else {
+          const error = new Error('nieznany błąd!');
+          error.errors = response?.errors;
+          throw error;
+
+          // I HAVE NO ABSOLUTE IDEA WHY THE THING BELOW DOESNT WORK AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          // throw new Error('nieznany błąd!', {"errors": response?.errors})
+        }
+      })
+      .catch(handleError)
+    }
+  }
+
+  async function handleLoginPress() {
+    const username = document.querySelector('#username').value
+    const password = document.querySelector('#password').value
+
+    // register validation === login validation
+    if (validateUsername(username) && validatePassword(password)) {
+      await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        })
+      })
+      .then((response) => {
+        //handle here server errors
+        if (response.status >= 500) {
+          throw new Error('Brak połączenia z serwerem!!')
+        }
+        return response?.json()
+      })
+      .then((response) => {
+        if (response.note === 'ok') {
+          console.log("OK!")
+          // i mean. what can go wrong right?
+          console.log(response)
+          
+          ReactSession.set("username", response.username)
+          // ReactSession.set("id", response.id)
+          
+          
+          
+          handleBadInput(true, 'pomyslnie zalogowano!')
+        } else {
+          const error = new Error('nieznany błąd!');
+          error.errors = response?.errors;
+          throw error;
+
+          // I HAVE NO ABSOLUTE IDEA WHY THE THING BELOW DOESNT WORK AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          // throw new Error('nieznany błąd!', {"errors": response?.errors})
+        }
+      })
+      .catch(handleError)
+    }
   }
 
   return (
@@ -24,12 +168,18 @@ export default function LoginModal({modalDisplay, modalClose}) {
             {/* <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg> */}
             </button>
           </div>
-          <div className="p-6">
-            <Input label="Podaj swój login"/>
-            <Input label="Podaj swoje hasło"/>
-          </div>
-          <div className="flex items-center px-6 py-4 border-t border-gray-200 rounded-b">
-            <button data-modal-hide="loginModal" type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Zaloguj się</button>
+          <div>
+            <form>
+              <div className="p-6">
+                <Input label="Podaj swój login" id='username' onChange={(e) => validateUsername(e.target.value)}/>
+                <Input label="Podaj swoje hasło" id='password' onChange={(e) => validatePassword(e.target.value)}/>
+              <div id='inputError' className='font-semibold text-red-700 invisible'>{msgError}</div>
+              </div>
+              <div className="flex items-center px-6 py-4 border-t border-gray-200 rounded-b">
+                <button name='loginBtn' type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" onClick={() => handleLoginPress()}>Zaloguj się</button>
+                <button name="registerBtn" type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" onClick={(e) => handleRegisterPress(e)}>rejestruj się</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

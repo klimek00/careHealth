@@ -8,7 +8,10 @@ import {
 } from "react-router-dom";
 
 import App from './App'
-import SearchDoctors from './routes/searchDoctors'
+import SearchDoctorsSite from './routes/searchDoctorsSite'
+import WorkerPanelSite from './routes/workerPanelSite'
+import Site404 from './routes/404Site'
+import { ReactSession } from 'react-client-session'
 
 const router = createBrowserRouter([
   {
@@ -17,15 +20,21 @@ const router = createBrowserRouter([
   },
   {
     path: '/searchDoctors',
-    element: <SearchDoctors/>
+    element: <SearchDoctorsSite/>
   },
-  // {
-  //   path: "*",
-  //   element: <Site_404/>
-  // },
-]);
+  {
+    path: "/workerPanel",
+    element: <WorkerPanelSite/>
+  },
+  {
+    path: "*",
+    element: <Site404/>
+  },
+])
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+ReactSession.setStoreType("cookie")
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
