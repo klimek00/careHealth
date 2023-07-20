@@ -7,8 +7,8 @@ export default function Site404() {
   return (
     <>
       <Header></Header>
-      <section className="flex flex-row w-full text-white">
-        <div className='flex w-full text-9xl'>
+      <section className="flex flex-col w-full p-6">
+        <div className='flex w-full text-9xl text-black'>
         {/* aside to show specialties of doctors */}
         uh-oh..
         

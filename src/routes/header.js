@@ -11,8 +11,11 @@ export default function Header() {
     setModalStatus(!modalStatus)
     console.log(modalStatus)  
   }
+  const logout = () => {
+    ReactSession.remove('username')
+    window.location.reload()
+  }
 
-  
 
   return (
     <>
@@ -24,8 +27,9 @@ export default function Header() {
         </div>
         <div className="w-full flex justify-end lg:flex lg:items-center lg:w-auto">
           <div>
-          {username && <button className="inline-block text-lg px-4 py-2 text-white rounded-md bg-violet-600 hover:bg-violet-800 shadow shadow-violet-800" onClick={() => window.location.href='/workerPanelSite'} >Twój panel</button>}
-            <button className="inline-block text-lg px-4 py-2 text-white rounded-md bg-violet-600 hover:bg-violet-800 shadow shadow-violet-800" onClick={modalUpdate} >Strefa pracownicza</button>
+            {username && <button onClick={() => logout()}>logout!!!</button>}
+          {username && <button className="inline-block text-lg px-4 py-2 text-white rounded-md bg-violet-600 hover:bg-violet-800 shadow shadow-violet-800" onClick={() => window.location.href='/workerPanel'} >Twój panel</button>}
+            {!username && <button className="inline-block text-lg px-4 py-2 text-white rounded-md bg-violet-600 hover:bg-violet-800 shadow shadow-violet-800" onClick={modalUpdate} >Logowanie pracownika</button>}
           </div>
         </div>
       </nav>

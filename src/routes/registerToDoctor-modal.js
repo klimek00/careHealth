@@ -5,6 +5,7 @@ export default function RegisterModal({modalDisplay, modalClose, specialty, doct
   //today converted for min/value
   const [registerDate, setRegisterDate] = useState('')
   if (!doctorInfo) { return (<>err</>) }
+  console.log(doctorInfo)
 
   const divStyle = {
     visibility: modalDisplay ? "visible" : "hidden",
