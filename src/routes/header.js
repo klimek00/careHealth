@@ -4,13 +4,17 @@ import { ReactSession } from 'react-client-session'
 
 
 export default function Header() {
+  //// MODAL ////
   const [modalStatus, setModalStatus] = useState(false)
-  let username = (ReactSession.get('username')) || ''
-
   const modalUpdate = () => {
     setModalStatus(!modalStatus)
     console.log(modalStatus)  
   }
+
+
+  //// USER VALIDATION ////
+  let username = (ReactSession.get('username')) || ''
+
   const logout = () => {
     ReactSession.remove('username')
     window.location.reload()

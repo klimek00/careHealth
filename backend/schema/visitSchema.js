@@ -16,6 +16,9 @@ const visitSchema = new mongoose.Schema({
   occupied: {
     type: Boolean,
     required: true
+  },
+  patient: {
+    type: String
   }
 })
 

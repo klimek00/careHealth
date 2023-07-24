@@ -4,8 +4,7 @@ import { ReactSession } from 'react-client-session'
 
 
 export default function LoginModal({modalDisplay, modalClose}) {
-  const [msgError, setMsgError] = useState('hasła')
-  
+  //// MODAL UPDATE
   const divStyle = {
     visibility: modalDisplay ? "visible" : "hidden",
     opacity: modalDisplay ? 1 : 0,
@@ -17,12 +16,17 @@ export default function LoginModal({modalDisplay, modalClose}) {
     modalClose()
   }
 
+  //// MESSAGE ERROR - WHAT GOES WRONG
+  const [msgError, setMsgError] = useState('hasła')
+
   let handleBadInput = (showError, msg = '') => {
     setMsgError(msg)
     let input = document.querySelector('#inputError')
     input?.classList.toggle('invisible', !showError)
   }
 
+
+  //// INPUT VALIDATION
   let validateUsername = (username) => {
     if (username.length < 3) {
       handleBadInput(true, 'Dlugosc username >= 3!') 
@@ -60,6 +64,8 @@ export default function LoginModal({modalDisplay, modalClose}) {
   async function handleRegisterPress (e) {
     const username = document.querySelector('#username').value
     const password = document.querySelector('#password').value
+    const place    = document.querySelector('#place').value
+    const contact  = document.querySelector('#contact').value
 
     //password validation via validateUsername, validatePassword
     //run again just to make sure everything fine
@@ -72,6 +78,8 @@ export default function LoginModal({modalDisplay, modalClose}) {
         body: JSON.stringify({
           username: username,
           password: password,
+          place:    place,
+          contact:  contact,
         })
       })
       .then((response) => {
@@ -173,6 +181,8 @@ export default function LoginModal({modalDisplay, modalClose}) {
               <div className="p-6">
                 <Input label="Podaj swój login" id='username' onChange={(e) => validateUsername(e.target.value)}/>
                 <Input label="Podaj swoje hasło" id='password' onChange={(e) => validatePassword(e.target.value)}/>
+                <Input label="Podaj miejsce zamieszkanai" id='place'/>
+                <Input label="Podaj nr kontaktowy" id='contact'/>
               <div id='inputError' className='font-semibold text-red-700 invisible'>{msgError}</div>
               </div>
               <div className="flex items-center px-6 py-4 border-t border-gray-200 rounded-b">

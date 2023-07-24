@@ -2,11 +2,7 @@ import {useState} from 'react'
 import BetterDatePicker from './calendar/betterDatePicker'
 
 export default function RegisterModal({modalDisplay, modalClose, specialty, doctorInfo}) {
-  //today converted for min/value
-  const [registerDate, setRegisterDate] = useState('')
-  if (!doctorInfo) { return (<>err</>) }
-  console.log(doctorInfo)
-
+  //// MODAL
   const divStyle = {
     visibility: modalDisplay ? "visible" : "hidden",
     opacity: modalDisplay ? 1 : 0,
@@ -17,9 +13,11 @@ export default function RegisterModal({modalDisplay, modalClose, specialty, doct
     modalClose()
   }
 
-  // if (!!doctorInfo) {
-  //   console.log(doctorInfo)
-  // }
+  //// VALIDATE DATA FROM DATABASE
+  const [registerDate, setRegisterDate] = useState('')
+  if (!doctorInfo) { return (<>err</>) }
+  console.log(doctorInfo)
+
 
   //validate if doctor for sure is free and in DB
   //validate if date isnt before today
@@ -42,9 +40,9 @@ export default function RegisterModal({modalDisplay, modalClose, specialty, doct
     //validate date and check if its not in past time
     try {
       const [day, month, year] = registerDate?.day?.split('.')
-      const [hours, minutes, seconds] = registerDate?.hour?.split(':')
+      const [hours, minutes] = registerDate?.hour?.split(':')
       
-      targetDate = new Date(parseInt(year), parseInt(month)-1, parseInt(day), parseInt(hours), parseInt(minutes), parseInt(seconds))
+      targetDate = new Date(parseInt(year), parseInt(month)-1, parseInt(day), parseInt(hours), parseInt(minutes))
     } catch (error) {
       console.error('error whne parsing date: ', error)
       return null
@@ -55,8 +53,6 @@ export default function RegisterModal({modalDisplay, modalClose, specialty, doct
       return null
     } else {
       console.log('works')
-
-
     }
   }
 
@@ -65,7 +61,7 @@ export default function RegisterModal({modalDisplay, modalClose, specialty, doct
   }
 
   return (
-    <div id="registerModal" className="h-full fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto w-full transition ease-out duration-300 text-black" onClick={e => handleModalClose(e)} style={divStyle}>
+    <div className="h-full fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto w-full transition ease-out duration-300 text-black" onClick={e => handleModalClose(e)} style={divStyle}>
       <div className="mt-24">
         <div className="relative bg-white rounded-lg shadow-lg border border-gray-300 rounded-md mx-auto w-1/4 p-4" onClick={(e) => e.stopPropagation()}>
           <div className="flex items-start justify-between border-b rounded-t mb-4">

@@ -59,7 +59,7 @@ app.post('/register', async(req, res) => {
   const User = require('./schema/userSchema')
 
   //default priviliges = 10 if register via site
-  const { username, password, priviliges = 10} = req.body
+  const { username, password, place, contact, priviliges=10, price=150} = req.body
 
   try {
     dbConnect({mongoose, uri})
@@ -76,7 +76,7 @@ app.post('/register', async(req, res) => {
   }
 
 
-  const userToAdd = new User({ username, password, priviliges})
+  const userToAdd = new User({ username, password, place, contact, priviliges, price})
   try {
     await userToAdd
     .save()
@@ -115,6 +115,12 @@ app.post('/login', async(req, res) => {
   try {
     const data = await User.findOne({ username: username })
 
+    if (!data) {
+      res.status(500).json({note: 'noUserFound', errors: error})
+      return
+
+    }
+
     // console.log(data)
     //   // test a matching 
     // console.log(user)
@@ -135,7 +141,7 @@ app.post('/login', async(req, res) => {
 })
 
 
-app.post('/showVisits', async(req, res) => {
+app.post('/getVisits', async(req, res) => {
   const mongoose = require('mongoose')
   const User = require('./schema/userSchema')
   const Visit = require('./schema/visitSchema')
@@ -150,14 +156,19 @@ app.post('/showVisits', async(req, res) => {
 
 
   try {
-    let user = await User.findOne({ username: username }).select("id")
+    const user = await User.findOne({ username: username }).select("id")
     if (!user) {
       res.status(402).json({note: 'noUserFound'})
       return
     }
 
-    let visits = await Visit.find({owner: user._id}).select("dayHour dayDate").exec()
-    console.log(visits)
+    const visits = await Visit.find({owner: user._id}).select("id dayHour dayDate occupied patient").exec()
+    if (!visits) {
+      res.status(402).json({note: 'noVisitsFound'})
+      return
+    }
+
+    res.status(201).json({note: 'ok', visits})
 
        
   } catch(error) {
@@ -177,7 +188,7 @@ app.post('/addVisit', async(req, res) => {
   console.log("addVisit")
 
   //default priviliges = 10 if register via site
-  const { username, dayHour, dayDate} = req.body
+  const { username, dayHour, dayDate, occupied=false, patient='' } = req.body
 
   try {
     dbConnect({mongoose, uri})
@@ -193,7 +204,7 @@ app.post('/addVisit', async(req, res) => {
     let user = await User.findOne({ username: username }).select("id")
     
     if (user) {
-      const visitToAdd = new Visit({owner: user._id, dayDate, dayHour, occupied: false})
+      const visitToAdd = new Visit({owner: user._id, dayDate, dayHour, occupied: occupied, patient: patient})
 
       await visitToAdd
       .save()
@@ -209,6 +220,36 @@ app.post('/addVisit', async(req, res) => {
 
 
 
+})
+
+app.post('/getWorkerData', async(req, res) => {
+  const mongoose = require('mongoose')
+  const User = require('./schema/userSchema')
+  const Visit = require('./schema/visitSchema')
+  const { username } = req.body
+
+  try {
+    dbConnect({mongoose, uri})
+  } catch(error) {
+    res.status(500).json({note: 'noServerConnection', errors: error})
+    return
+  }
+
+
+  try {
+    const user = await User.findOne({ username: username }).select("id username place contact price priviliges specialty")
+    if (!user) {
+      res.status(402).json({note: 'noUserFound'})
+      return
+    }
+
+    res.status(201).json({note: 'ok', user})
+
+       
+  } catch(error) {
+    res.status(500).json({note: 'errorWithUser', errors: error})
+    console.log(error)
+  }
 })
 
 app.listen(5000, () => { console.log("server running at 5000")})

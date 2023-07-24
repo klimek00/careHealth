@@ -13,10 +13,19 @@ const userSchema = new mongoose.Schema({
     required: true,
     minLength: 8,
   },
+  place: {
+    type: String,
+    required: true
+  },
+  contact: [String],
   priviliges: {
     type: Number,
     required: true
-  }
+  },
+  price: {
+    type: Number
+  },
+  specialty: [String]
 })
 
 
