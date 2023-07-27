@@ -19,6 +19,8 @@ export default function WorkerPanelAside() {
     } else if (e.target.value === "showPastVisits") {
       setField("pastVisitsField")
       showPastVisits()
+    } else if (e.target.value === "addSpecialtyField") {
+      setField("addSpecialtyField")
     } else {
       setField("wieleVisitsField")
       
@@ -83,6 +85,38 @@ export default function WorkerPanelAside() {
       .catch(error => console.error(error))
     }
 
+    function addSpecialty() {
+      const specialtyName = document.querySelector('#specialtyInput').value
+
+      try {
+        fetch('/addUserSpecialty', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            username: ReactSession.get("username"),
+            specialty: specialtyName
+          })
+        })
+        .then(res => {
+          if (!res.ok) throw new Error("error within adding specialty")
+          return res.json()
+        })
+        .then (res => {
+          if (res.note === 'ok') {
+            alert("dodano")
+          }
+        })
+        .catch(error => {
+          throw new Error(error)
+        })
+      } catch(error) {
+        console.error(error)
+      }
+
+    }
+
   return (
     <>
       <div className="h-full flex flex-col w-1/12 text-black pt-2 text-center border-r">
@@ -90,6 +124,7 @@ export default function WorkerPanelAside() {
         <button className="p-2 hover:bg-violet-400" onClick={(e) => handleOptionChange(e)} value="addVisit">Dodaj wizyte</button>
         <button className="p-2 hover:bg-violet-400" onClick={(e) => handleOptionChange(e)} value="addWieleVisits">Dodaj wiele..</button>
         <button className="p-2 hover:bg-violet-400" onClick={(e) => handleOptionChange(e)} value="showPastVisits">Wyswietl wszystkie dni</button>
+        <button className="p-2 hover:bg-violet-400" onClick={(e) => handleOptionChange(e)} value="addSpecialtyField">Dodaj specjalizacje</button>
       </div>
       <div id="workerContent" className="h-full text-black">
         <div id="visitsField" className={`p-4 flex ${"visitsField" !==field ? "hidden" : 'block'}`}>
@@ -103,6 +138,10 @@ export default function WorkerPanelAside() {
         </div>
         <div id="wieleVisitsField" className={`p-4 flex ${"wieleVisitsField" !==field ? "hidden" : 'block'}`}>
           in build..
+        </div>
+        <div id="addSpecialtyField" className={`p-4 flex ${"addSpecialtyField" !==field ? "hidden" : 'block'}`}>
+          dodaj specjalizacje uzytkownikowi: <input id="specialtyInput" type="text" className="mt-2 w-36 px-4 py-2 border border-gray-300 rounded-md"/> 
+          <button onClick={addSpecialty}>wyslij</button>
         </div>
       </div>
     </>

@@ -91,13 +91,12 @@ export default function LoginModal({modalDisplay, modalClose}) {
       })
       .then((response) => {
         if (response.note === 'ok') {
-          console.log("OK!")
+          console.log("OK!", response)
           
           //TODO: add session, go to panel etc.
-
           //make the login session server-sided
           ReactSession.set("username", response.username)
-
+          console.log("reactsess from register:", ReactSession.get("username"))
           
           
           handleBadInput(true, 'pomyslnie zarejestrowano!')
@@ -135,7 +134,13 @@ export default function LoginModal({modalDisplay, modalClose}) {
       .then((response) => {
         //handle here server errors
         if (response.status >= 500) {
+          handleBadInput(true, 'Brak polaczenia z serwerem')
           throw new Error('Brak połączenia z serwerem!!')
+        }
+        if (!response.ok) {
+          const error = new Error('error at logging!');
+          error.errors = response?.errors;
+          throw error;
         }
         return response?.json()
       })
@@ -143,12 +148,8 @@ export default function LoginModal({modalDisplay, modalClose}) {
         if (response.note === 'ok') {
           console.log("OK!")
           // i mean. what can go wrong right?
-          console.log(response)
-          
           ReactSession.set("username", response.username)
           // ReactSession.set("id", response.id)
-          
-          
           
           handleBadInput(true, 'pomyslnie zalogowano!')
         } else {

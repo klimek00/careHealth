@@ -11,14 +11,24 @@ export default function SpecialtyAside({chooseSpecialty, selectedSpecialty}) {
   const [specialties, setSpecialties] = useState([{}])
   
     useEffect(() => {
-      fetch("/api?data=specialtyData")
-      .then( 
-        res => res.json()
-      ).then( 
-        data => {
-          setSpecialties(data.specjalizacje)
-        })
-      }, [])
+      try {
+        fetch("/api?data=specialtyData")
+        .then( 
+          res => {
+            if (!res.ok) throw new Error('error fetching data')
+            return res.json()
+          }
+        ).then( 
+          data => {
+            setSpecialties(data.specjalizacje)
+          })
+        .catch (error => { throw new Error(error)})
+      }
+      catch(error) {
+        console.log(error)
+        throw error
+      }
+    }, [])
 
   /**
    * ternary inside for loading default specialty

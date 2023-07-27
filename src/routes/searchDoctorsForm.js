@@ -10,15 +10,27 @@ export default function SearchDoctorsForm({specialty}) {
 
   //fetch doctors data
   useEffect(() => {
-    fetch("/api?data=doctorsData")
-    .then( 
-      res => res.json()
-    ).then( 
-      data => {
-        setDoctorsData(data)
-      })
+    try {
+      fetch("/api?data=doctorsData")
+      .then( 
+        res => {
+          if (!res.ok) throw new Error('blad przy pobieraniu')
+          return res.json()
+        }
+      )
+      .then( 
+        data => {
+          console.log(data)
+          setDoctorsData(data)
+        })
+      .catch(error => {throw new Error(error)})
+    } catch(error) {
+      console.error(error)
+      throw error
+    }
+    
   }, [])
-  
+
   //triggering modalUpdate will turn on/off modal
   const modalUpdate = () => {
     setModalStatus(!modalStatus)

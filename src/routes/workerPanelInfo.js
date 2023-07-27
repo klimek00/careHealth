@@ -9,14 +9,20 @@ export default function WorkerPanelInfo({worker}) {
     setModalStatus(!modalStatus)
   }
 
+  //// MODAL CONTENT
+  const [field, setField] = useState('')
+
 
   const handleVisitClick = (e) => {
     modalUpdate()
-    stuff(e.target)
+    setPressedElem(e.target)
   }
 
-  const stuff = (e) => {
-    console.log(e)
+  const setPressedElem = (e) => {
+    if (!e.getAttribute("name") && e.getAttribute("name") === '') {
+      return
+    }
+    setField(e.getAttribute("name"))
   }
 
   
@@ -44,18 +50,21 @@ export default function WorkerPanelInfo({worker}) {
           <div className={workerItemLabelStyle} >
             Imie i nazwisko
           </div>  
-          <div id='workerName' className={workerItemContentStyle}>
+          <div name='workerName' className={workerItemContentStyle}>
             {worker.username}
           </div>
           <div className={arrowItemStyle}>
             &gt;
           </div>
         </div>
-        <div className={workerItemBoxStyle} onClick={handleVisitClick}>
-        <div className={workerItemLabelStyle}>
+        {/* 
+        * TODO: fix multiple names
+         */}
+        <div name='workerPlace' className={workerItemBoxStyle} onClick={handleVisitClick}>
+        <div name='workerPlace' className={workerItemLabelStyle}>
             Miejsce wizyty
           </div>
-          <div id='workerPlace' className={workerItemContentStyle}>
+          <div name='workerPlace' className={workerItemContentStyle}>
           {worker.place}
           </div>
           <div className={arrowItemStyle}>
@@ -66,10 +75,10 @@ export default function WorkerPanelInfo({worker}) {
         <div className={workerItemLabelStyle}>
             Nr kontaktowy/email:
           </div>
-          <div id='workerContact' className={workerItemContentStyle} onClick={handleVisitClick}>
+          <div name='workerContact' className={workerItemContentStyle} onClick={handleVisitClick}>
           {worker.contact && worker.contact.map((e, i) => {
             return (
-              <p key={i}>
+              <p name='workerContact' key={i}>
                 {e}
               </p>
             )
@@ -84,7 +93,7 @@ export default function WorkerPanelInfo({worker}) {
         <div className={workerItemLabelStyle}>
             Ustalona cena/wizyta:
           </div>
-          <div id='workerPrice' className={workerItemContentStyle}>
+          <div name='workerPrice' className={workerItemContentStyle}>
             {worker.price || 100} zł
           </div>
           <div className={arrowItemStyle}>
@@ -92,7 +101,7 @@ export default function WorkerPanelInfo({worker}) {
           </div>
         </div>
       </div>
-      <UpdateInfo modalDisplay={modalStatus} modalClose={modalUpdate}/>
+      <UpdateInfo modalDisplay={modalStatus} modalClose={modalUpdate} worker={worker} field={field}/>
     </>
   )
 }

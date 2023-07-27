@@ -1,7 +1,11 @@
 import {React, useState}  from 'react'
 import UpdateVisit from './updateVisit-Modal'
+import { ReactSession } from 'react-client-session'
+
 
 export default function VisitsTable({ visits }) {
+  const [visit, setVisit] = useState('')
+
   //// MODAL
   const [modalStatus, setModalStatus] = useState(false)
   const modalUpdate = () => {
@@ -10,12 +14,8 @@ export default function VisitsTable({ visits }) {
 
 
   const handleVisitClick = (visit) => {
+    setVisit(visit)
     modalUpdate()
-    stuff(visit)
-  }
-
-  const stuff = (visit) => {
-    console.log(visit)
   }
 
   return (
@@ -49,7 +49,7 @@ export default function VisitsTable({ visits }) {
         })}
       </tbody>
     </table>
-    <UpdateVisit modalDisplay={modalStatus} modalClose={modalUpdate}/>
+    {visit && <UpdateVisit username={ReactSession.get("username")} visit={visit} modalDisplay={modalStatus} modalClose={modalUpdate}/>}
     </>
   )
 }
