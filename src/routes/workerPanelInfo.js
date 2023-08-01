@@ -57,9 +57,7 @@ export default function WorkerPanelInfo({worker}) {
             &gt;
           </div>
         </div>
-        {/* 
-        * TODO: fix multiple names
-         */}
+
         <div name='workerPlace' className={workerItemBoxStyle} onClick={handleVisitClick}>
         <div name='workerPlace' className={workerItemLabelStyle}>
             Miejsce wizyty

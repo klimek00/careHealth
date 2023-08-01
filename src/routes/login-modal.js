@@ -93,7 +93,6 @@ export default function LoginModal({modalDisplay, modalClose}) {
         if (response.note === 'ok') {
           console.log("OK!", response)
           
-          //TODO: add session, go to panel etc.
           //make the login session server-sided
           ReactSession.set("username", response.username)
           console.log("reactsess from register:", ReactSession.get("username"))

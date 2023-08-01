@@ -50,7 +50,7 @@ function BetterDatePicker({data, days=7, title = 'Data Wizyty', style, options, 
   const generateNextDate = (i) => {
     const newDate = new Date()
     newDate.setDate(newDate.getDate() + i)
-    virtualDate = `${newDate.getDate()}.${newDate.getMonth() < 9 ? 0 : ''}${newDate.getMonth()+1}.${newDate.getFullYear()}`
+    virtualDate = `${newDate.getDate() < 9 ? 0 : ''}${newDate.getDate()}.${newDate.getMonth() < 9 ? 0 : ''}${newDate.getMonth()+1}.${newDate.getFullYear()}`
     return newDate
   }
 

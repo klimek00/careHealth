@@ -19,9 +19,8 @@ export default function SearchDoctorsForm({specialty}) {
         }
       )
       .then( 
-        data => {
-          console.log(data)
-          setDoctorsData(data)
+        res => {
+          setDoctorsData(res.data)
         })
       .catch(error => {throw new Error(error)})
     } catch(error) {
@@ -38,27 +37,29 @@ export default function SearchDoctorsForm({specialty}) {
 
   //get pressed doctor's data, put into state, activate modal
   const doctorPressed = (id) => {
-    let pressedDoctorData = specialtyDoctors.lekarze?.find(doctor => doctor.id === id)
+    let pressedDoctorData = specialtyDoctors?.find(doctor => doctor._id === id)  
     setDoctorInfo(pressedDoctorData)
     
     if (!!pressedDoctorData) {
       modalUpdate()
     }
   }
-  /**
-   * TODO: dodaj wyszukiwarke
-   */
-
-
-  //get from chosen specialty doctors
+  
+  //get doctors from chosen specialty 
+  // move it more react-readable (useeffect in on document loaded and on change of specialty)
   if (specialty) {
-    var specialtyDoctors = doctorsData.specjalizacje?.filter(spec => spec.nazwa?.toLowerCase() === specialty)[0]
+    var specialtyDoctors = doctorsData.filter(doctor => {
+      return doctor.specialty?.some(spec => {
+        return spec.toLowerCase() === specialty.toLowerCase()
+      }) 
+    })
   }
+
   // console.log('speicalty:', specialty, 'specialDoctors:', specialtyDoctors)
 
   return (
   <>
-    <div className='border border-neutral-400 shadow shadow-neutral-400 w-1/2 py-2 mt-10 text-black'>
+    <div className='border border-neutral-400 shadow shadow-neutral-400 w-1/2 min-w-[36em] py-2 mt-10 text-black'>
       <div id='form' className='w-full flex'>
         <div className='w-full px-4'>
           <div id='form-header' className='h-10 flex border-b border-neutral-400'>
@@ -72,7 +73,7 @@ export default function SearchDoctorsForm({specialty}) {
           <div className='h-96 flex flex-col form-body w-full border border-slate-400 mt-2 overflow-auto'>
           {typeof specialtyDoctors === 'undefined' ? (
             <p>Wczytywanie danych..</p>
-          ) : <DisplayDoctors data={specialtyDoctors} doctorPressed={doctorPressed}></DisplayDoctors> }
+          ) : <DisplayDoctors doctors={specialtyDoctors} doctorPressed={doctorPressed} specialty={specialty}></DisplayDoctors> }
           </div>
         </div>
       </div>

@@ -20,7 +20,6 @@ export default function WorkerPanelSite() {
   }, [ReactSession?.get("username")])
 
 
-  // TODO: validate with session ID on server side
   async function getData() {
     await fetch('/getWorkerData', {
       method: 'POST',
@@ -49,11 +48,7 @@ export default function WorkerPanelSite() {
           <div className='my-5 mx-10 border-b border-neutral-400 shadow shadow-neutral-400'>
             <div className='max-h-20 py-4 border-b border-neutral-400 shadow shadow-neutral-400'>Zmień swoje dane</div>
             <div className='flex flex-row text-left text-base'>
-            {
-              /**
-               * TODO: jako admin masz mozliwosc klikniecia w glowne informacje (inny napis) ktory wyswietli liste lekarzy.
-               */
-            }
+
             <WorkerPanelInfo worker={workerData}/>
 
             <div className='w-full flex'>
@@ -63,13 +58,7 @@ export default function WorkerPanelSite() {
 
           </div>
         {/* aside to show specialties of doctors */}
-        {
-          /**
-           * TODO: dla admina: weryfikacja przez username_id i priviliges. po stronie sv, obroń się przed fetcvh
-           * wyswietl tabele ktora pokazuje lekarzy: mozesz dodać lekarza, zmienić imie.nazwisko/adres/dodać godziny.
-           * czyli na lewo lekarze, na srodku wybrany lekarz z parametrami, jak klikniesz jakikolwiek element to modal który mówi "zmień dane" 
-           */
-        }
+      
     
         </div>
       </section>

@@ -35,24 +35,64 @@ async function dbConnect({mongoose, uri: {item}}) {
   return true
 }
 
+async function getDoctorsData() {
+  const mongoose = require('mongoose')
+  const User = require('./schema/userSchema')
+
+  try {
+    dbConnect({mongoose, uri})
+  } catch(error) {
+    res.status(500).json({note: 'noServerConnection', errors: error})
+    return
+  }
+
+  try {
+    const doctors = await User
+    .find({priviliges: 7})
+    .select("id username place contact price specialty")
+    .exec()
+
+    if (!doctors) {
+      res.status(402).json({note: 'noVisitsFound'})
+      return
+    }
+
+    return doctors
+
+       
+  } catch(error) {
+    res.status(500).json({note: 'errorWithUser', errors: error})
+    console.log(error)
+  }
+
+
+  return data
+}
+
+async function getDoctorsAvailableVisits() {
+  let visits = ''
+
+
+
+  return visits
+}
 
 app.use(bodyParser.json())
 app.get('/api', async (req, res) => {
   // console.log(req.query.data)
   if (req.query.data === 'doctorsData') {
     // console.log('received req: ', req.query.data)
-    const doctorsData = await fs.readFile('./data/doctorsData.json')
+    const doctorsData = await getDoctorsData()
 
     //already is json
-    res.send(doctorsData)
+    res.status(201).json({note: "ok", data: doctorsData})
   } else if (req.query.data === 'specialtyData') {
     const specialtyData = await fs.readFile('./data/specialtyData.json')
 
     res.send(specialtyData)
   } else {
-    res.status(400).json({ error: 'Invalid request' });
+    return null
   }
-  // res.json({"users": ["useroneE", "userTwo"]})
 })
 
 app.post('/register', async(req, res) => {
@@ -75,7 +115,6 @@ app.post('/register', async(req, res) => {
     res.status(404).json({note: 'badPasswordLength'})
     return
   }
-
 
   const userToAdd = new User({ username, password, place, contact, priviliges, price})
   try {
@@ -232,7 +271,7 @@ app.post('/getVisits', async(req, res) => {
     }
 
     const visits = await Visit
-    .find({owner: user._id, dayDate: {$gte: today}})
+    .find({owner: user._id, dayDate: {$gte: today}, occupied: false})
     .select("id dayHour dayDate occupied patient")
     .exec()
 

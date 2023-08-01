@@ -1,1 +1,27 @@
-inputy mogą być przerobione na useRef - np. w modalach -> showError
+! inputy mogą być przerobione na useRef - np. w modalach -> showError
+! displayDoctors.js -  todo: add onclick event to register to certain doc (docs should have unique id)
+! dodaj wyszukiwarke
+! workerPanelAside - funkcjonalności funkcji: addVisitField, showPastVisits()
+!searchDoctorsForm - funkcja znajdujaca doktorow ze specialty - zmienna specialtyDoctors powinna byc bardziej reactra (useEffect, onDocumentLoaded)
+
+
+!!workerPanelSite - dzialanie funkcji:
+            {
+              /**
+               * TODO: jako admin masz mozliwosc klikniecia w glowne informacje (inny napis) ktory wyswietli liste lekarzy.
+               */
+            }
+              {
+          /**
+           * TODO: dla admina: weryfikacja przez username_id i priviliges. po stronie sv, obroń się przed fetcvh
+           * wyswietl tabele ktora pokazuje lekarzy: mozesz dodać lekarza, zmienić imie.nazwisko/adres/dodać godziny.
+           * czyli na lewo lekarze, na srodku wybrany lekarz z parametrami, jak klikniesz jakikolwiek element to modal który mówi "zmień dane" 
+           */
+        }
+!!
+
+!!! walidacja sesji - od strony serwear, bazuj na znanym szyfrowaniu tylko miedzy serwer-klient
+
+
+!!! pobieraj doctorData z bazy danych users - bazuj na priviliges (np. 5), specialty przypisz odpowiednie
+!!! getDoctorsData - dodaj schema UserInfoSchema
